@@ -70,15 +70,6 @@ nav a {
     width: -webkit-fill-available;
 }
 
-.search-bar button {
-    border: none;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    background-color: var(--primary-color);
-    color: var(--text-primary-color);
-}
-
 .overview-heading {
     display: flex;
     justify-content: space-between;
@@ -88,13 +79,11 @@ nav a {
     margin: 0;
 }
 
-.overview-heading button {
+.overview-heading select {
     border: none;
-    padding: .5rem .75rem;
+    padding: .5rem;
     border-radius: 10px;
-    font-size: 1rem;
-    background-color: var(--secondary-color);
-    color: var(--text-primary-color);
+    font-size: .9rem;
 }
 
 .book-cards {
