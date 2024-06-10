@@ -1,10 +1,14 @@
 <template>
-    <h1>Book Tracker</h1>
-    <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-    </nav>
-    <main>
-        <router-view></router-view>
-    </main>
+    <div class="container">
+        <div class="top-bar">
+            <b><a href="/">Book Tracker</a></b>
+            <nav class="nav-links">
+                <router-link to="/">Overview</router-link>
+                <router-link to="/about">About</router-link>
+            </nav>
+        </div>
+        <main>
+            <router-view></router-view>
+        </main>
+    </div>
 </template>
