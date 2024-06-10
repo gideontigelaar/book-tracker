@@ -1,0 +1,25 @@
+:root {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --border-color: #2d3748;
+    --primary-color: #3490dc;
+    --secondary-color: #f6993f;
+    --danger-color: #e3342f;
+    --success-color: #38c172;
+    --warning-color: #f6ad55;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.router-link-active, .router-link-exact-active {
+    color: var(--secondary-color);
+}
