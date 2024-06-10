@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('author');
-            $table->integer('isbn');
+            $table->biginteger('isbn');
             $table->boolean('is_read')->default(false);
         });
     }

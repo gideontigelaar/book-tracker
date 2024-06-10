@@ -1,12 +1,14 @@
+<script setup>
+</script>
 <template>
     <div class="search-bar">
         <input type="text" v-model="search" placeholder="Search books">
-        <button @click="searchBooks">Search</button>
+        <!-- <button @click="searchBooks">Search</button> -->
     </div>
 
     <div class="overview-heading">
         <h1>All books</h1>
-        <button @click="sortBooks">Sort</button>
+        <!-- <button @click="sortBooks">Sort</button> -->
     </div>
 
     <div class="book-cards">
