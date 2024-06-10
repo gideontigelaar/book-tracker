@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router';
 const search = ref('');
 const books = ref([]);
 const sortBy = ref('');
-const sortOrder = ref('asc'); // or 'desc' for descending
+const sortOrder = ref('asc');
 const router = useRouter();
 
 function fetchBooks() {

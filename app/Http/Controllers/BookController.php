@@ -62,7 +62,13 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $book = Book::findOrFail($id);
+            return response()->json($book);
+        } catch (\Exception $e) {
+            Log::error('Error fetching book: ' . $e->getMessage());
+            return response()->json(['error' => 'Book not found'], 404);
+        }
     }
 
     /**
@@ -70,7 +76,21 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'isbn' => 'required|numeric|digits_between:10,13|unique:books,isbn,' . $id,
+            'is_read' => 'required|boolean',
+        ]);
+
+        try {
+            $book = Book::findOrFail($id);
+            $book->update($validatedData);
+            return response()->json($book);
+        } catch (\Exception $e) {
+            Log::error('Error updating book: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while updating the book'], 500);
+        }
     }
 
     /**
@@ -78,6 +98,13 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $book = Book::findOrFail($id);
+            $book->delete();
+            return response()->json(['message' => 'Book deleted successfully'], 200);
+        } catch (\Exception $e) {
+            Log::error('Error deleting book: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while deleting the book'], 500);
+        }
     }
 }
