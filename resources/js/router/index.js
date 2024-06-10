@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Overview from "../components/Overview.vue";
+import Add from "../components/Add.vue";
 import About from "../components/About.vue";
 import NotFound from "../components/NotFound.vue";
 
 const routes = [
     { path: "/", component: Overview },
+    { path: "/add", component: Add },
     { path: "/about", component: About },
     { path: "/:pathMatch(.*)*", component: NotFound },
 ];

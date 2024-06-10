@@ -1,6 +1,7 @@
 :root {
     --primary-color: #0d6efd;
     --secondary-color: #6c757d;
+    --danger-color: #dc3545;
     --bg-primary-color: #2b3036;
     --bg-secondary-color: #212529;
     --text-primary-color: #dee2e6;
@@ -86,6 +87,15 @@ nav a {
     font-size: .9rem;
 }
 
+.overview-heading button {
+    border: none;
+    padding: .65rem .75rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    font-size: .9rem;
+    color: var(--text-primary-color);
+}
+
 .book-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -99,4 +109,92 @@ nav a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.book-card button {
+    border: none;
+    padding: .25rem;
+    border-radius: 10px;
+    font-size: .9rem;
+    color: var(--text-primary-color);
+    margin-top: 1rem;
+}
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-secondary-color);
+    border-radius: 10px;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.add-book button {
+    border: none;
+    padding: .65rem .75rem;
+    border-radius: 10px;
+    font-size: .9rem;
+    color: var(--text-primary-color);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    border: none;
+    padding: .5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.form-group select {
+    border: none;
+    padding: .5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.top, .bottom {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top .form-group, .bottom .form-group{
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.edit-book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-secondary-color);
+    border-radius: 10px;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.edit-book button {
+    border: none;
+    padding: .65rem .75rem;
+    border-radius: 10px;
+    font-size: .9rem;
+    color: var(--text-primary-color);
+}
+
+.primaryBtn {
+    background-color: var(--primary-color)!important;
+}
+
+.secondaryBtn {
+    background-color: var(--secondary-color)!important;
+}
+
+.deleteBtn {
+    background-color: var(--danger-color)!important;
 }

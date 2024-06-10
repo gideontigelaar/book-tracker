@@ -1,11 +1,13 @@
 <script setup>
 import axios from 'axios';
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 
 const search = ref('');
 const books = ref([]);
 const sortBy = ref('');
 const sortOrder = ref('asc'); // or 'desc' for descending
+const router = useRouter();
 
 function fetchBooks() {
     axios.get('/api/books', {
@@ -23,10 +25,8 @@ function fetchBooks() {
     });
 }
 
-// Watch for changes in search and sort criteria and fetch books accordingly
 watch([search, sortBy, sortOrder], fetchBooks);
 
-// Initial fetch
 fetchBooks();
 
 function sortBooks(by) {
@@ -38,29 +38,41 @@ function sortBooks(by) {
     }
     fetchBooks();
 }
+
+function navigateToAddBook() {
+    router.push('/add');
+}
 </script>
 
 <template>
     <div class="search-bar">
-        <input type="text" v-model="search" placeholder="Search books">
+        <input type="text" v-model="search" placeholder="Search books by title, author, or ISBN">
     </div>
 
     <div class="overview-heading">
-        <h1>All books</h1>
-        <select @change="sortBooks($event.target.value)">
-            <option value="title">Title</option>
-            <option value="author">Author</option>
-            <option value="isbn">ISBN</option>
-            <option value="is_read">Status</option>
-        </select>
+        <h1>All books ({{ books.length }})</h1>
+        <div>
+            <span>Sort by:&nbsp;&nbsp;</span>
+            <select @change="sortBooks($event.target.value)">
+                <option value="title">Title ↓</option>
+                <option value="author">Author ↓</option>
+                <option value="isbn">ISBN ↓</option>
+                <option value="is_read">Status ↓</option>
+            </select>
+
+            <button @click="navigateToAddBook" class="primaryBtn">Add book</button>
+        </div>
     </div>
 
     <div class="book-cards">
+        <span v-if="books.length === 0">No books found</span>
+
         <div v-for="book in books" :key="book.id" class="book-card">
             <h3>{{ book.title }}</h3>
             <span>Author: {{ book.author }}</span>
             <span>ISBN: {{ book.isbn }}</span>
             <span>Status: {{ book.is_read ? 'Read' : 'Not read' }}</span>
+            <button @click="$router.push(`/edit/${book.id}`)" class="secondaryBtn">Edit</button>
         </div>
     </div>
 </template>
