@@ -20,7 +20,10 @@ body .container {
 }
 
 main {
-    padding: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,8 +65,7 @@ nav a {
 .search-bar input {
     border: none;
     padding: 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1rem;
     width: -webkit-fill-available;
 }
@@ -71,9 +73,41 @@ nav a {
 .search-bar button {
     border: none;
     padding: 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1rem;
     background-color: var(--primary-color);
     color: var(--text-primary-color);
+}
+
+.overview-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.overview-heading h1 {
+    margin: 0;
+}
+
+.overview-heading button {
+    border: none;
+    padding: .5rem .75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: var(--secondary-color);
+    color: var(--text-primary-color);
+}
+
+.book-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.book-card {
+    background-color: var(--bg-secondary-color);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
