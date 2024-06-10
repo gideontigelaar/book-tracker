@@ -10,7 +10,16 @@ const is_read = ref(true);
 
 const router = useRouter();
 
-function addBook() {
+function isISBNUnique(isbn) {
+    return axios.post('/api/books/check-isbn', { isbn })
+        .then(response => response.data.isUnique)
+        .catch(error => {
+            console.log(error);
+            return false;
+        });
+}
+
+async function addBook() {
     axios.post('/api/books', {
         title: title.value,
         author: author.value,

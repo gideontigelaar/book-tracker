@@ -107,4 +107,27 @@ class BookController extends Controller
             return response()->json(['error' => 'An error occurred while deleting the book'], 500);
         }
     }
+
+    public function checkISBN(Request $request)
+    {
+        try {
+            $request->validate([
+                'isbn' => 'required|numeric|digits_between:10,13',
+                'id' => 'nullable|exists:books,id'
+            ]);
+
+            $query = Book::where('isbn', $request->isbn);
+
+            if ($request->has('id')) {
+                $query->where('id', '!=', $request->id);
+            }
+
+            $isUnique = !$query->exists();
+
+            return response()->json(['isUnique' => $isUnique]);
+        } catch (\Exception $e) {
+            Log::error('Error checking ISBN: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while checking the ISBN'], 500);
+        }
+    }
 }

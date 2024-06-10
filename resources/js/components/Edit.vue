@@ -32,7 +32,16 @@ function fetchBookDetails(id) {
         });
 }
 
-function saveChanges() {
+function isISBNUnique(isbn, id) {
+    return axios.post('/api/books/check-isbn', { isbn, id })
+        .then(response => response.data.isUnique)
+        .catch(error => {
+            console.log(error);
+            return false;
+        });
+}
+
+async function saveChanges() {
     axios.put(`/api/books/${bookId}`, {
         title: title.value,
         author: author.value,
